@@ -230,7 +230,7 @@ def generate_report(job_dir: Path, job_name: str) -> str:
 
         # ---- NEW BLOCK: special handling for "7x24" tab ----
         if tab == "7x24":
-            lines.append("### 🕒 Chronological Timeline (Latest to Earliest)")
+            lines.append("### Chronological Timeline (Latest to Earliest)")
             timeline_posts = []
             for s in tab_posts:
                 rid = s.get("id")

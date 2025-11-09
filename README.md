@@ -25,9 +25,13 @@ git clone https://github.com/Hwi3/Xueqiu-Crawler-and-Report-Generator.git
 ```bash
 conda create -n linqalpha_code_test python=3.11
 conda activate linqalpha_code_test
-pip install -r requirements.txt
 ```
+or
 
+```bash
+python3 -m venv env # or python -m venv env 
+source env/bin/activate
+```
 ### Install Playwright browsers
 ```bash
 playwright install chromium
@@ -35,7 +39,7 @@ playwright install chromium
 
 ---
 
-## 🔐 2. Environment Setup
+##  2. Environment Setup
 
 Create a `.env` file in the project root (or edit `.env.example`):
 
@@ -43,7 +47,7 @@ Create a `.env` file in the project root (or edit `.env.example`):
 FIREWORKS_API_KEY=sk-your-fireworks-key
 ```
 
-> 🔸 The summarizer automatically loads this key via `dotenv`.  
+> The summarizer automatically loads this key via `dotenv`.  
 > If `.env` is missing, it will raise `RuntimeError: Missing FIREWORKS_API_KEY env variable`.
 
 ---
@@ -53,11 +57,11 @@ FIREWORKS_API_KEY=sk-your-fireworks-key
 Edit the file `config.yaml` to control job settings:
 
 ```yaml
-job: job_20251109
+job: default       # or jobid e.g. job_20251109 
 tabs: all          # or comma-separated keys, e.g. "fund,etf,7x24"
 mode: all          # one of [crawl, summarize, report, all]
-scroll: 3          # number of scroll rounds for crawling
-sum_limit: 50      # number of posts to summarize per tab (None = all)
+scroll: 5          # number of scroll rounds for crawling
+sum_limit: 30      # number of posts to summarize per tab (None = all)
 ```
 
 ---
@@ -114,7 +118,7 @@ Each post is summarized using the **Fireworks Chat Completions API**:
 url = "https://api.fireworks.ai/inference/v1/chat/completions"
 payload = {
   "model": "accounts/fireworks/models/gpt-oss-20b",
-  "temperature": 0.6,
+  "temperature": 0.3,
   "messages": [{"role": "user", "content": "<post text>"}]
 }
 ```
