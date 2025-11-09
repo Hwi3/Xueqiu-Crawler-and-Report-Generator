@@ -1,0 +1,7 @@
+job: default # default if starting from crawl, Otherwise put job name
+tabs: all # hot, 7x24, video, fund, news, expert, private_equity, etf or all
+scroll: 5 # number of scroll rounds per tab
+mode: all # crawl, summarize, report or all
+sum_limit: 10 # max number of posts to summarize per tab
+
+
